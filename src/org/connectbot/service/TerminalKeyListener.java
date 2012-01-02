@@ -492,6 +492,12 @@ public class TerminalKeyListener implements OnKeyListener, OnSharedPreferenceCha
 		// CTRL-? sends DEL
 		else if (key == 0x3F)
 			key = 0x7F;
+		// Allow CTRL-_ w/o shift is Ctrl-dash (-)
+		else if (key == 0x2D)
+			key = 0x1F;
+		// Use CTRL-/ for Ctrl-^ since Ctrl-6 send the F6 function key
+		else if (key == 0x2F)
+			key = 0x1E;
 		return key;
 	}
 
