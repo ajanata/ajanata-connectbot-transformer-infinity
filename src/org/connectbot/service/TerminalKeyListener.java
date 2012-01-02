@@ -203,7 +203,7 @@ public class TerminalKeyListener implements OnKeyListener, OnSharedPreferenceCha
 				mDeadKey = 0;
 			}
 
-			final boolean printing = (key != 0);
+			final boolean printing = (key != 0 && keyCode != KeyEvent.KEYCODE_ENTER);
 
 			// otherwise pass through to existing session
 			// print normal keys
