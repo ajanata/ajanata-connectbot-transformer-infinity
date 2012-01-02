@@ -323,11 +323,21 @@ public class TerminalKeyListener implements OnKeyListener, OnSharedPreferenceCha
 			// look for special chars
 			switch(keyCode) {
 			case KEYCODE_ESCAPE:
-			case KeyEvent.KEYCODE_SEARCH:
 				sendEscape();
 				return true;
 			case KeyEvent.KEYCODE_TAB:
 				bridge.transport.write(0x09);
+				return true;
+			case KeyEvent.KEYCODE_SEARCH:
+				// check to see which shortcut the search button triggers
+				String search = manager.prefs.getString(
+						PreferenceConstants.SEARCH,
+						PreferenceConstants.SEARCH_BACKBTN);
+				if(PreferenceConstants.SEARCH_BACKBTN.equals(search)) {
+					// TODO: figure out what to do here!
+				} else if(PreferenceConstants.SEARCH_ESC.equals(search)) {
+					sendEscape();
+				}
 				return true;
 			case KeyEvent.KEYCODE_CAMERA:
 

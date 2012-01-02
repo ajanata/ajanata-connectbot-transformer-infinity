@@ -41,6 +41,18 @@
 		<item>Automatic</item>
 	</string-array>
 
+	<string-array name="list_search" translatable="false">
+		<item>@string/list_search_backbtn</item>
+		<item>@string/list_search_esc</item>
+		<item>@string/list_search_none</item>
+	</string-array>
+
+	<string-array name="list_search_values" translatable="false">
+		<item>Back Button</item>
+		<item>Esc Key</item>
+		<item>None</item>
+	</string-array>
+
 	<string-array name="list_camera" translatable="false">
 		<item>@string/list_camera_ctrlaspace</item>
 		<item>@string/list_camera_ctrla</item>

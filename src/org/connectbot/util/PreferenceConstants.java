@@ -55,6 +55,13 @@ public class PreferenceConstants {
 	public static final String KEYMODE_RIGHT = "Use right-side keys";
 	public static final String KEYMODE_LEFT = "Use left-side keys";
 
+	public static final String BACKBTN = "backbtn";
+
+	public static final String SEARCH = "search";
+
+	public static final String SEARCH_BACKBTN = "Back Button";
+	public static final String SEARCH_ESC = "Esc Key";
+
 	public static final String CAMERA = "camera";
 
 	public static final String CAMERA_CTRLA_SPACE = "Ctrl+A then Space";

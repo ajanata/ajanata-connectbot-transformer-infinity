@@ -121,7 +121,7 @@ public class ConsoleActivity extends Activity {
 
 	private InputMethodManager inputManager;
 
-	private MenuItem disconnect, copy, paste, portForward, resize, urlscan;
+	private MenuItem disconnect, copy, paste, portForward, resize, urlscan, back;
 
 	protected TerminalBridge copySource = null;
 	private int lastTouchRow, lastTouchCol;
@@ -586,6 +586,20 @@ public class ConsoleActivity extends Activity {
 
 	}
 
+	@Override
+	public void onBackPressed() {
+		// See if the user wants to make the back button send an Esc
+		if (prefs.getBoolean(PreferenceConstants.BACKBTN, true)) {
+			View flip = findCurrentView(R.id.console_flip);
+			if (flip == null) return;
+			TerminalView terminal = (TerminalView)flip;
+			TerminalKeyListener handler = terminal.bridge.getKeyHandler();
+			handler.sendEscape();
+		} else {
+			super.onBackPressed();
+		}
+	}
+
 	/**
 	 *
 	 */
@@ -632,6 +646,19 @@ public class ConsoleActivity extends Activity {
 		}
 
 		menu.setQwertyMode(true);
+
+		back = menu.add(R.string.list_host_back);
+		if (hardKeyboard)
+			back.setAlphabeticShortcut('b');
+		back.setEnabled(activeTerminal);
+		back.setIcon(android.R.drawable.ic_menu_revert);
+		back.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			public boolean onMenuItemClick(MenuItem item) {
+				// back
+				finish();
+				return true;
+			}
+		});
 
 		disconnect = menu.add(R.string.list_host_disconnect);
 		if (hardKeyboard)
