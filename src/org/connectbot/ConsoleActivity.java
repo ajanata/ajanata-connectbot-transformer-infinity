@@ -589,7 +589,7 @@ public class ConsoleActivity extends Activity {
 	@Override
 	public void onBackPressed() {
 		// See if the user wants to make the back button send an Esc
-		if (prefs.getBoolean(PreferenceConstants.BACKBTN, true)) {
+		if (prefs.getBoolean(PreferenceConstants.BACKBTN, false)) {
 			View flip = findCurrentView(R.id.console_flip);
 			if (flip == null) return;
 			TerminalView terminal = (TerminalView)flip;
